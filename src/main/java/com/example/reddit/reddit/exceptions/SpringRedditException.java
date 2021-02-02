@@ -6,4 +6,8 @@ public class SpringRedditException extends RuntimeException {
     public SpringRedditException(String exMessage, MailException e) {
         super(exMessage);
     }
+
+    public SpringRedditException(String invalid_username_not_found) {
+
+    }
 }

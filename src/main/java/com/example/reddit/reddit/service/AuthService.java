@@ -27,7 +27,7 @@ public class AuthService {
         private final VerificationTokenRepository verificationTokenRepository;
         private final MailService mailService;
 
-
+    //Creating a new user
         @Transactional
         public void signup(RegisterRequest registerRequest){
 
@@ -38,7 +38,7 @@ public class AuthService {
             user.setCreated(Instant.now());
             user.setEnabled(false);
             userRepository.save(user);
-
+            //generating token
             String token = generateVerificationToken((user));
             mailService.sendMail((new NotificationEmail("Please Activate your Account",
                     user.getEmail(), "Thank you for signing up to Spring Reddit, " +
@@ -47,7 +47,7 @@ public class AuthService {
 
         }
 
-
+    //generating token
         private String generateVerificationToken(User user){
             String token = UUID.randomUUID().toString();
             VerificationToken verificationToken = new VerificationToken();
@@ -57,7 +57,7 @@ public class AuthService {
             verificationTokenRepository.save(verificationToken);
             return token;
         }
-
+    //verifying after user clicks on verification link
     public void verifyAccount(String token) {
           Optional<VerificationToken> verificationToken = verificationTokenRepository.findByToken(token);
           verificationToken.orElseThrow(() -> new SpringRedditException("Invalid token"));

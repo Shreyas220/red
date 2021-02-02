@@ -19,7 +19,7 @@ class MailService {
 
     private final JavaMailSender mailSender;
     private final MailContentBuilder mailContentBuilder;
-
+    //initializing message to send
     @Async
     void sendMail(NotificationEmail notificationEmail) {
         MimeMessagePreparator messagePreparator = mimeMessage -> {
@@ -29,6 +29,7 @@ class MailService {
             messageHelper.setSubject(notificationEmail.getSubject());
             messageHelper.setText(mailContentBuilder.build(notificationEmail.getBody()));
         };
+        //try catch to send the email
         try {
             mailSender.send(messagePreparator);
             log.info("Activation email sent!!");

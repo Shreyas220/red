@@ -12,4 +12,8 @@ public class SpringRedditException extends RuntimeException {
     public SpringRedditException(String invalid_username_not_found, GeneralSecurityException e) {
 
     }
+
+    public SpringRedditException(String vote_not_found) {
+
+    }
 }

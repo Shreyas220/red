@@ -1,9 +1,12 @@
 package com.example.reddit.reddit.mapper;
 
-import com.example.reddit.reddit.models.Post;
+import com.example.reddit.reddit.dto.PostRequest;
+import com.example.reddit.reddit.dto.PostResponse;
+import com.example.reddit.reddit.models.*;
 import com.example.reddit.reddit.repository.CommentRepository;
 import com.example.reddit.reddit.repository.VoteRepository;
 import com.example.reddit.reddit.service.AuthService;
+import com.github.marlonlom.utilities.timeago.TimeAgo;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
